@@ -1,0 +1,36 @@
+form {
+    padding: 2vh;
+    border: 1px black solid;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+
+input,label {
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+    padding: 1.5vh;
+    width: 90%;
+}
+
+.btn {
+    margin-right: 2vh;
+    margin-left: 2vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 14vh;
+    height: 4vh;
+    border-radius: 14px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.addBTN {
+    background-color: #04AA6D;
+}
+.editBTN {
+    background-color:blue;
+}

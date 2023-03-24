@@ -1,0 +1,42 @@
+table {
+    border: 1px black solid;
+    margin-left: 25%;
+    margin-top: 5%;
+    min-width: 50%;
+    text-align: center;
+}
+
+th {
+    background-color: #04AA6D;
+    color: white;
+}
+
+th,td {
+    border: 1px black solid;
+    padding: 1vh;
+}
+
+.btn {
+    margin-right: 2vh;
+    margin-left: 2vh;
+    width: 7vh;
+    height: 4vh;
+    border-radius: 14px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.deleteBTN {
+    background-color: red;
+}
+
+.editBTN {
+    background-color:blue;
+}
+
+.padding {
+    padding: 2vh;
+}
+
+table tr:nth-child(odd){background-color: #f2f2f2;}
