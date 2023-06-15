@@ -1,27 +1,24 @@
 form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
     padding: 2vh;
     border: 1px black solid;
     width: 30%;
-    margin-left: 35%;
-    margin-top: 5%;
-    text-align: center;
+    margin:  5% auto;
 }
 
 
 input,label {
-    margin-bottom: 1vh;
-    margin-top: 2vh;
     padding: 1.5vh;
     width: 90%;
 }
 
 .btn {
-    margin-right: 2vh;
-    margin-left: 2vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    width: 14vh;
-    height: 4vh;
+    margin: 2vh 0;
+    width: 8rem;
+    height: 3.8vh;
     border-radius: 14px;
     border: none;
     color: white;
@@ -33,4 +30,12 @@ input,label {
 }
 .editBTN {
     background-color:blue;
+}
+/**************************/
+/* BELOW 1000px  */
+/**************************/
+@media (max-width: 62.5em) {
+form {
+    width: 60%;
+}
 }

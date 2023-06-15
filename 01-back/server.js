@@ -58,6 +58,29 @@ app.post("/addProduct", (req, res) => {
   );
 });
 
+app.put("/updateProduct/:productId", (req, res) => {
+  const productName = req.body.productName;
+  const productPrice = req.body.productPrice;
+  const productQuantity = req.body.productQuantity;
+
+  const productId = req.params.productId;
+  let sql;
+
+  sql =
+    `UPDATE products SET 
+    productName = '${productName}',
+    productPrice = ${productPrice},
+    productQuantity = ${productQuantity}
+     WHERE productId =` + productId;
+
+  connection.query(sql, productId, (error, products) => {
+    res.send({
+      status: "success",
+      products: products,
+    });
+  });
+});
+
 app.delete("/deleteProduct/:productId", (req, res) => {
   const deleteProduct = req.params.productId;
   let sql;

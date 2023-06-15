@@ -1,7 +1,6 @@
 table {
-    border: 1px black solid;
-    margin-left: 25%;
-    margin-top: 5%;
+    border-collapse: collapse;
+    margin: 5% auto;
     min-width: 50%;
     text-align: center;
 }
@@ -17,14 +16,18 @@ th,td {
 }
 
 .btn {
-    margin-right: 2vh;
-    margin-left: 2vh;
-    width: 7vh;
-    height: 4vh;
+    width: 5rem;
+    height: 2.5rem;
     border-radius: 14px;
     border: none;
     color: white;
     font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .deleteBTN {
@@ -35,8 +38,6 @@ th,td {
     background-color:blue;
 }
 
-.padding {
-    padding: 2vh;
-}
+
 
 table tr:nth-child(odd){background-color: #f2f2f2;}

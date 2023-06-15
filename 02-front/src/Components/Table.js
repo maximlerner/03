@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Table.module.css";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { useState } from "react";
 
-function Table() {
+function Table({ onEdit }) {
   const [productList, setProductList] = useState([]);
   const [totalItems, setTotalItems] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProducts();
@@ -25,6 +27,14 @@ function Table() {
       }
     );
   };
+
+  const handleEdit = (id) => {
+    const editProduct = productList.find((el) => id === el.productId);
+    console.log(editProduct);
+    onEdit(editProduct);
+    navigate("/editProduct");
+  };
+
   return (
     <div className={classes.Table}>
       <table>
@@ -45,8 +55,12 @@ function Table() {
                 <td>{product.productName}</td>
                 <td>{product.productPrice}</td>
                 <td>{product.productQuantity}</td>
-                <td>
-                  <button className={`${classes.btn} ${classes.editBTN}`}>
+                <td className={classes.actions}>
+                  <button
+                    className={`${classes.btn} ${classes.editBTN}`}
+                    value={product.productId}
+                    onClick={() => handleEdit(product.productId)}
+                  >
                     Edit
                   </button>
                   <button
