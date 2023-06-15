@@ -13,24 +13,31 @@ function Table({ onEdit }) {
     getProducts();
   }, []);
 
-  const getProducts = () => {
-    Axios.get("http://localhost:3030").then((response) => {
-      setProductList(response.data.products);
-      setTotalItems(response.data.QuantitySum);
-    });
+  const getProducts = async () => {
+    try {
+      Axios.get("http://localhost:3030").then((response) => {
+        setProductList(response.data.products);
+        setTotalItems(response.data.QuantitySum);
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleDelete = (productID) => {
-    Axios.delete(`http://localhost:3030/deleteProduct/${productID}`).then(
-      () => {
-        getProducts();
-      }
-    );
+    try {
+      Axios.delete(`http://localhost:3030/deleteProduct/${productID}`).then(
+        () => {
+          getProducts();
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleEdit = (id) => {
     const editProduct = productList.find((el) => id === el.productId);
-    console.log(editProduct);
     onEdit(editProduct);
     navigate("/editProduct");
   };

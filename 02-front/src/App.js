@@ -10,6 +10,10 @@ function App() {
   function handleProductToEdit(productToEdit) {
     setProductToEdit(() => [productToEdit]);
   }
+
+  function handleResetEditState() {
+    setProductToEdit(() => []);
+  }
   return (
     <div className="App">
       <Header />
@@ -19,7 +23,12 @@ function App() {
         <Route path="/addProduct" element={<AddProduct />} />
         <Route
           path="/editProduct"
-          element={<AddProduct editObj={productsToEdit} />}
+          element={
+            <AddProduct
+              editObj={productsToEdit}
+              resetEdit={handleResetEditState}
+            />
+          }
         />
       </Routes>
     </div>

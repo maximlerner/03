@@ -38,7 +38,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/addProduct", (req, res) => {
-  console.log(req.body.productPrice);
   const productName = req.body.productName;
   const productPrice = req.body.productPrice;
   const productQuantity = req.body.productQuantity;

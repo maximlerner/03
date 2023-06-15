@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import classes from "./AddProduct.module.css";
 
-function AddProduct({ editObj }) {
+function AddProduct({ editObj, resetEdit }) {
   const [_productName, setProductName] = useState("");
   const [_productPrice, setProductPrice] = useState("");
   const [_productQuantity, setProductQuantity] = useState("");
@@ -34,28 +34,35 @@ function AddProduct({ editObj }) {
   };
 
   const onAddProduct = async () => {
-    alert(_productPrice);
-    axios.post("http://localhost:3030/addProduct", {
-      productName: _productName,
-      productPrice: _productPrice,
-      productQuantity: _productQuantity,
-    });
-  };
-
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    console.log(_productID);
-    axios
-      .put(`http://localhost:3030/updateProduct/${_productID}`, {
+    try {
+      alert(_productPrice);
+      axios.post("http://localhost:3030/addProduct", {
         productName: _productName,
         productPrice: _productPrice,
         productQuantity: _productQuantity,
-      })
-      .then((res) => {
-        console.log(res);
-        alert("fdf");
       });
-    navigate("/home");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleEdit = async (e) => {
+    try {
+      e.preventDefault();
+      axios
+        .put(`http://localhost:3030/updateProduct/${_productID}`, {
+          productName: _productName,
+          productPrice: _productPrice,
+          productQuantity: _productQuantity,
+        })
+        .then(() => {
+          if (resetEdit) resetEdit();
+          navigate("/home");
+          console.log("edit");
+        });
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <div className={classes.AddProduct}>
